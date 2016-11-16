@@ -7,6 +7,7 @@ import frappe
 from frappe.utils import cint, fmt_money
 from erpnext.shopping_cart.cart import _get_cart_quotation
 from erpnext.shopping_cart.doctype.shopping_cart_settings.shopping_cart_settings import is_cart_enabled
+from sim_automation.sim_automation.sim_automation import get_raw_sim_qty
 
 @frappe.whitelist(allow_guest=True)
 def get_product_info(item_code):
@@ -17,7 +18,8 @@ def get_product_info(item_code):
 	qty = 0
 	cart_quotation = _get_cart_quotation()
 	template_item_code = frappe.db.get_value("Item", item_code, "variant_of")
-	in_stock = get_qty_in_stock(item_code, template_item_code)
+	# in_stock = get_qty_in_stock(item_code, template_item_code)
+	in_stock = get_raw_sim_qty()
 	price = get_price(item_code, template_item_code, cart_quotation.selling_price_list)
 
 	if price:

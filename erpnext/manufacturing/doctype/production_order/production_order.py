@@ -506,7 +506,8 @@ def make_stock_entry(production_order_id, purpose, qty=None):
 		stock_entry.set("additional_costs", additional_costs)
 
 	stock_entry.get_items()
-	return stock_entry.as_dict()
+	# return stock_entry.as_dict()
+	return stock_entry
 
 @frappe.whitelist()
 def get_events(start, end, filters=None):

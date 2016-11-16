@@ -20,7 +20,14 @@ frappe.ready(function() {
 				if(r.message.stock==0) {
 					$(".item-stock").html("<div class='help'>Not in stock</div>");
 				}
-				else if(r.message.stock==1) {
+				// else if(r.message.stock==1) {
+				// 	$(".item-stock").html("<div style='color: green'>\
+				// 		<i class='icon-check'></i> Available (in stock)</div>");
+				// }
+				else if(r.message.stock<10){
+					$(".item-stock").html("<div style='color: #e5c100'>\
+						<i class='icon-check'></i> Only " + r.message.stock + " more available</div>");
+				} else if(r.message.stock>=10){
 					$(".item-stock").html("<div style='color: green'>\
 						<i class='icon-check'></i> Available (in stock)</div>");
 				}

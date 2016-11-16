@@ -150,6 +150,15 @@ standard_queries = {
 }
 
 doc_events = {
+	"Sales Order": {
+		"on_submit": "sim_automation.sim_automation.sim_automation.make_manufacture_order"
+	},
+	"Material Request": {
+		"on_submit": "sim_automation.sim_automation.sim_automation.make_production_orders"
+	},
+	"Production Order": {
+		"on_submit": "sim_automation.sim_automation.sim_automation.start_production_order"
+	},
 	"Stock Entry": {
 		"on_submit": "erpnext.stock.doctype.material_request.material_request.update_completed_and_requested_qty",
 		"on_cancel": "erpnext.stock.doctype.material_request.material_request.update_completed_and_requested_qty"
