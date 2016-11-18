@@ -153,6 +153,9 @@ doc_events = {
 	"Sales Order": {
 		"on_submit": "sim_automation.sim_automation.sim_automation.make_manufacture_order"
 	},
+	"Payment Entry": {
+		"on_submit": "sim_automation.sim_automation.sim_automation.activate_after_payment"
+	},
 	"Material Request": {
 		"on_submit": "sim_automation.sim_automation.sim_automation.make_production_orders"
 	},

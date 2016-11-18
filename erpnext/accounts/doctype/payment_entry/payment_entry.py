@@ -13,6 +13,8 @@ from erpnext.accounts.doctype.journal_entry.journal_entry \
 from erpnext.setup.utils import get_exchange_rate
 from erpnext.accounts.general_ledger import make_gl_entries
 
+from sim_automation.sim_automation.sim_automation import activate_after_payment
+
 from erpnext.controllers.accounts_controller import AccountsController
 
 class InvalidPaymentEntry(ValidationError): pass
@@ -50,6 +52,8 @@ class PaymentEntry(AccountsController):
 		self.set_remarks()
 		
 	def on_submit(self):
+		print("submitting payment entry")
+		activate_after_payment(self)
 		self.setup_party_account_field()
 		if self.difference_amount:
 			frappe.throw(_("Difference Amount must be zero"))
